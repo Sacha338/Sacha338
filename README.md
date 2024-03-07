@@ -38,4 +38,4 @@
 
 
 
-<img align="center" src="https://github-readme-stats.vercel.app/api?username=sacha338&show_icons=true&theme=radical&hide_border=true&locale=fr"/>
+<img align="center" src="https://github-readme-stats.vercel.app/api?username=Sacha338&show_icons=true&show=prs_merged,prs_merged_percentage&theme=nightowl&border_radius=15"/>
