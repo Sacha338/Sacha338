@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="330" viewBox="0 0 1200 330" role="img" aria-labelledby="title desc">
+  <title id="title">Sacha — animated GitHub profile header</title>
+  <desc id="desc">An animated futuristic header showing the name Sacha and Ovyn.</desc>
+  <style>
+    .name{fill:#111827;font:800 82px Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;letter-spacing:13px;text-anchor:middle}
+    .subtitle{fill:#4B5563;font:600 18px Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;letter-spacing:4px;text-anchor:middle}
+    .label{fill:#2B4BEE;font:700 13px ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;letter-spacing:2px;text-anchor:middle}
+    .orb{opacity:.30;transform-box:fill-box;transform-origin:center}
+    .orb-one{animation:drift-one 8s ease-in-out infinite alternate}
+    .orb-two{animation:drift-two 10s ease-in-out infinite alternate}
+    .orb-three{animation:drift-three 7s ease-in-out infinite alternate}
+    .ring{fill:none;stroke:url(#ring-gradient);transform-origin:600px 163px;animation:spin 18s linear infinite}
+    .ring-dashed{stroke-dasharray:8 13;animation:spin-reverse 13s linear infinite}
+    .pulse{transform-origin:600px 163px;animation:pulse 3.2s ease-in-out infinite}
+    .scan{fill:url(#scan-gradient);opacity:.45;animation:scan 4.8s ease-in-out infinite}
+    .spark{fill:#0891B2;filter:url(#soft-glow);transform-box:fill-box;transform-origin:center;animation:sparkle 2.4s ease-in-out infinite}
+    .spark:nth-of-type(2n){animation-delay:.7s}.spark:nth-of-type(3n){animation-delay:1.4s}
+    @keyframes drift-one{from{transform:translate(-10px,-6px) scale(.96)}to{transform:translate(26px,16px) scale(1.08)}}
+    @keyframes drift-two{from{transform:translate(12px,8px) scale(1.04)}to{transform:translate(-30px,-18px) scale(.92)}}
+    @keyframes drift-three{from{transform:translate(-8px,12px)}to{transform:translate(24px,-20px)}}
+    @keyframes spin{to{transform:rotate(360deg)}}@keyframes spin-reverse{to{transform:rotate(-360deg)}}
+    @keyframes pulse{0%,100%{transform:scale(.98);opacity:.72}50%{transform:scale(1.035);opacity:1}}
+    @keyframes scan{0%,15%{transform:translateX(-430px);opacity:0}45%,60%{opacity:.52}85%,100%{transform:translateX(430px);opacity:0}}
+    @keyframes sparkle{0%,100%{transform:scale(.45);opacity:.22}50%{transform:scale(1.35);opacity:1}}
+    @media (prefers-reduced-motion:reduce){*{animation:none!important}}
+  </style>
+  <defs>
+    <linearGradient id="background" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F8FAFF"/><stop offset="1" stop-color="#EEF2FF"/></linearGradient>
+    <linearGradient id="ring-gradient" x1="380" y1="45" x2="820" y2="285" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#2B4BEE"/><stop offset=".5" stop-color="#7C3AED"/><stop offset="1" stop-color="#0891B2"/></linearGradient>
+    <linearGradient id="scan-gradient" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#0891B2" stop-opacity="0"/><stop offset=".5" stop-color="#0891B2"/><stop offset="1" stop-color="#0891B2" stop-opacity="0"/></linearGradient>
+    <radialGradient id="orb-blue"><stop offset="0" stop-color="#2B4BEE" stop-opacity=".95"/><stop offset="1" stop-color="#2B4BEE" stop-opacity="0"/></radialGradient>
+    <radialGradient id="orb-purple"><stop offset="0" stop-color="#7C3AED" stop-opacity=".9"/><stop offset="1" stop-color="#7C3AED" stop-opacity="0"/></radialGradient>
+    <radialGradient id="orb-cyan"><stop offset="0" stop-color="#0891B2" stop-opacity=".82"/><stop offset="1" stop-color="#0891B2" stop-opacity="0"/></radialGradient>
+    <filter id="blur-40" x="-80%" y="-80%" width="260%" height="260%"><feGaussianBlur stdDeviation="38"/></filter>
+    <filter id="soft-glow" x="-200%" y="-200%" width="500%" height="500%"><feGaussianBlur stdDeviation="4" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    <clipPath id="rounded"><rect x="12" y="12" width="1176" height="306" rx="34"/></clipPath>
+  </defs>
+  <g clip-path="url(#rounded)">
+    <rect x="12" y="12" width="1176" height="306" rx="34" fill="url(#background)"/>
+    <g stroke="#2B4BEE" stroke-opacity=".08" stroke-width="1">
+      <path d="M0 65H1200M0 115H1200M0 165H1200M0 215H1200M0 265H1200"/>
+      <path d="M100 0V330M200 0V330M300 0V330M400 0V330M500 0V330M600 0V330M700 0V330M800 0V330M900 0V330M1000 0V330M1100 0V330"/>
+    </g>
+    <g filter="url(#blur-40)">
+      <circle class="orb orb-one" cx="250" cy="95" r="115" fill="url(#orb-blue)"/>
+      <circle class="orb orb-two" cx="930" cy="220" r="145" fill="url(#orb-purple)"/>
+      <circle class="orb orb-three" cx="670" cy="20" r="90" fill="url(#orb-cyan)"/>
+    </g>
+    <rect x="210" y="52" width="780" height="222" rx="54" fill="#FFFFFF" fill-opacity=".78" stroke="#2B4BEE" stroke-opacity=".22" stroke-width="1.5"/>
+    <g class="pulse"><ellipse class="ring" cx="600" cy="163" rx="330" ry="116" stroke-width="2.2" opacity=".75"/><ellipse class="ring ring-dashed" cx="600" cy="163" rx="355" ry="132" stroke-width="1.3" opacity=".48"/></g>
+    <rect class="scan" x="510" y="52" width="180" height="222"/>
+    <circle class="spark" cx="318" cy="102" r="3"/><circle class="spark" cx="885" cy="94" r="2.5"/><circle class="spark" cx="812" cy="240" r="3"/><circle class="spark" cx="390" cy="237" r="2"/><circle class="spark" cx="971" cy="167" r="2"/><circle class="spark" cx="236" cy="174" r="2.5"/>
+    <text class="label" x="600" y="105">AI • PRODUCT • CODE</text>
+    <text class="name" x="606" y="185">SACHA</text>
+    <text class="subtitle" x="600" y="229">BUILDING OVYN</text>
+  </g>
+  <rect x="12" y="12" width="1176" height="306" rx="34" fill="none" stroke="url(#ring-gradient)" stroke-width="1.5" opacity=".45"/>
+</svg>

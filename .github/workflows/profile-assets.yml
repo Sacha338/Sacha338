@@ -1,0 +1,54 @@
+name: Generate profile assets
+
+on:
+  schedule:
+    - cron: "17 2 * * *"
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - ".github/workflows/profile-assets.yml"
+      - ".github/scripts/generate_languages.py"
+
+jobs:
+  generate:
+    name: Generate arcade games and private language stats
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout profile repository
+        uses: actions/checkout@v4
+
+      - name: Verify private repository token
+        env:
+          PROFILE_STATS_TOKEN: ${{ secrets.PROFILE_STATS_TOKEN }}
+        run: |
+          if [ -z "$PROFILE_STATS_TOKEN" ]; then
+            echo "::error::Missing PROFILE_STATS_TOKEN. Add it in Settings > Secrets and variables > Actions."
+            exit 1
+          fi
+
+      - name: Generate Pac-Man and Breakout contribution graphs
+        uses: abozanona/pacman-contribution-graph@v5.0.0
+        with:
+          github_user_name: ${{ github.repository_owner }}
+          games: "pacman,breakout"
+
+      - name: Generate language statistics from public and private repositories
+        env:
+          PROFILE_STATS_TOKEN: ${{ secrets.PROFILE_STATS_TOKEN }}
+          GITHUB_USERNAME: ${{ github.repository_owner }}
+          EXCLUDE_REPOS: "Sacha338"
+        run: python3 .github/scripts/generate_languages.py
+
+      - name: Publish generated SVG files
+        uses: crazy-max/ghaction-github-pages@v3.1.0
+        with:
+          target_branch: output
+          build_dir: dist
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
